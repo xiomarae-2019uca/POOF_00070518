@@ -1,0 +1,163 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>F2F.Testing.NUnit</name>
+    </assembly>
+    <members>
+        <member name="T:F2F.Testing.NUnit.AppConfigFeature">
+            <summary>
+            Replaces the app.config of current test assembly with a new file.
+            </summary>
+        </member>
+        <member name="M:F2F.Testing.NUnit.AppConfigFeature.#ctor">
+            <summary>
+            Initializes the test fixture by creating a backup of app.config file.
+            </summary>
+        </member>
+        <member name="M:F2F.Testing.NUnit.AppConfigFeature.NUnit_SetUpAppConfig">
+            <summary>Set up the feature.</summary>
+        </member>
+        <member name="M:F2F.Testing.NUnit.AppConfigFeature.NUnit_TearDownAppConfig">
+            <summary>Tear down the feature.</summary>
+        </member>
+        <member name="M:F2F.Testing.NUnit.AppConfigFeature.Install(System.String)">
+            <summary>
+            Install new app.config for current test assembly.
+            </summary>
+            <param name="appConfigFile">The new app.config file.</param>
+        </member>
+        <member name="M:F2F.Testing.NUnit.AppConfigFeature.Dispose">
+            <summary>
+            Re-install the original app.config
+            </summary>
+        </member>
+        <member name="T:F2F.Testing.NUnit.Feature">
+            <inheritdoc/>
+        </member>
+        <member name="M:F2F.Testing.NUnit.Feature.OnUse">
+            <inheritdoc/>
+        </member>
+        <member name="T:F2F.Testing.NUnit.IFeature">
+            <summary>
+            Represents a test feature that can be registered within a <see cref="T:F2F.Testing.NUnit.TestFixture"/>
+            </summary>
+        </member>
+        <member name="M:F2F.Testing.NUnit.IFeature.OnUse">
+            <summary>
+            Called, when this feature is actually used, as soon as a call to <see cref="M:F2F.Testing.NUnit.TestFixture.Use``1"/> or
+            <see cref="M:F2F.Testing.NUnit.TestFixture.Use``1(System.String)"/> is performed. A feature implementation can use this to 
+            perform some initialization.
+            </summary>
+        </member>
+        <member name="T:F2F.Testing.NUnit.SqlServerFeature">
+            <summary>
+            Provides a temporary database in SQL Server for a test fixture.
+            </summary>
+        </member>
+        <member name="M:F2F.Testing.NUnit.SqlServerFeature.#ctor(System.String)">
+            <summary>
+            Initializes the test fixture with the given SQL Server connection string.
+            </summary>
+            <param name="connectionString">The SQL Server connection string.</param>
+        </member>
+        <member name="M:F2F.Testing.NUnit.SqlServerFeature.#ctor(System.String,System.String)">
+            <summary>
+            Initializes the test fixture with the given SQL Server connection string and database name.
+            </summary>
+            <param name="connectionString">The SQL Server connection string.</param>
+            <param name="databaseName">The database name to create.</param>
+        </member>
+        <member name="P:F2F.Testing.NUnit.SqlServerFeature.Database">
+            <summary>Gets the database.</summary>
+            <value>The database.</value>
+        </member>
+        <member name="M:F2F.Testing.NUnit.SqlServerFeature.NUnit_SetUpSQLServer">
+            <summary>Set up the SQL connection.</summary>
+        </member>
+        <member name="M:F2F.Testing.NUnit.SqlServerFeature.NUnit_TearDownSQLServer">
+            <summary>Tear down the SQL connection.</summary>
+        </member>
+        <member name="M:F2F.Testing.NUnit.SqlServerFeature.Import(System.String)">
+            <summary>
+            Import a SQL dump file into database.
+            </summary>
+            <param name="sqlDumpFile">The SQL dump file.</param>
+        </member>
+        <member name="M:F2F.Testing.NUnit.SqlServerFeature.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged
+            resources.
+            </summary>
+            <seealso cref="M:System.IDisposable.Dispose()"/>
+        </member>
+        <member name="T:F2F.Testing.NUnit.TestFixture">
+            <summary>
+            A generic base class for a test fixture.
+            </summary>
+        </member>
+        <member name="M:F2F.Testing.NUnit.TestFixture.Register``1(``0)">
+            <summary>
+            Register the given feature.
+            </summary>
+            <typeparam name="TFeature">The feature's type.</typeparam>
+            <param name="feature">The feature.</param>
+        </member>
+        <member name="M:F2F.Testing.NUnit.TestFixture.Register``1(``0,System.String)">
+            <summary>
+            Register the given feature by name.
+            </summary>
+            <typeparam name="TFeature">The feature's type.</typeparam>
+            <param name="feature">The feature.</param>
+            <param name="name">The feature's name.</param>
+        </member>
+        <member name="M:F2F.Testing.NUnit.TestFixture.Use``1">
+            <summary>
+            Return a known feature.
+            </summary>
+            <typeparam name="TFeature">The feature's type.</typeparam>
+            <returns>The feature</returns>
+        </member>
+        <member name="M:F2F.Testing.NUnit.TestFixture.Use``1(System.String)">
+            <summary>
+            Return a known feature.
+            </summary>
+            <typeparam name="TFeature">The feature's type.</typeparam>
+            <param name="name">The feature's name.</param>
+            <returns>The feature</returns>
+        </member>
+        <member name="M:F2F.Testing.NUnit.TestFixture.SetUpFeatures">
+            <summary>Set up all known features.</summary>
+        </member>
+        <member name="M:F2F.Testing.NUnit.TestFixture.TearDownFeatures">
+            <summary>Tear down all known features.</summary>
+        </member>
+        <member name="M:F2F.Testing.NUnit.TestFixture.DisposeFeatures">
+            <summary>Dispose all known features.</summary>
+        </member>
+        <member name="M:F2F.Testing.NUnit.TestFixture.InvokeMethodWithAttribute``1(System.Collections.Generic.IEnumerable{F2F.Testing.NUnit.IFeature})">
+            <summary>Invoke all methods with support given attribute.</summary>
+        </member>
+        <member name="M:F2F.Testing.NUnit.TestFixture.Finalize">
+            <summary>
+            Class destructor. Calls Dispose, no managed resources should be disposed
+            </summary>
+        </member>
+        <member name="M:F2F.Testing.NUnit.TestFixture.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged
+            resources.
+            </summary>
+            <seealso cref="M:System.IDisposable.Dispose()"/>
+        </member>
+        <member name="M:F2F.Testing.NUnit.TestFixture.Dispose(System.Boolean)">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged
+            resources.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:F2F.Testing.NUnit.TestFixture.DisposeInReverseOrder(System.Collections.Generic.IEnumerable{F2F.Testing.NUnit.IFeature})">
+            <summary>Dispose all features which are IDisposable in reverse order.</summary>
+        </member>
+    </members>
+</doc>

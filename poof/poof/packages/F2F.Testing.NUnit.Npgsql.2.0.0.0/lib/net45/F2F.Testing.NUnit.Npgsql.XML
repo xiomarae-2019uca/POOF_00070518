@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>F2F.Testing.NUnit.Npgsql</name>
+    </assembly>
+    <members>
+        <member name="T:F2F.Testing.NUnit.Npgsql.PostgreSQLFeature">
+            <summary>
+            Provides a temporary database in PostgreSQL server for a test fixture.
+            </summary>
+        </member>
+        <member name="M:F2F.Testing.NUnit.Npgsql.PostgreSQLFeature.#ctor(System.String)">
+            <summary>
+            Initializes the test fixture with the given PostgreSQL connection string.
+            </summary>
+            <param name="connectionString">The PostgreSQL connection string.</param>
+        </member>
+        <member name="M:F2F.Testing.NUnit.Npgsql.PostgreSQLFeature.#ctor(System.String,System.String)">
+            <summary>
+            Initializes the test fixture with the given PostgreSQL connection string and database name.
+            </summary>
+            <param name="connectionString">The PostgreSQL connection string.</param>
+            <param name="databaseName">The database name to create.</param>
+        </member>
+        <member name="P:F2F.Testing.NUnit.Npgsql.PostgreSQLFeature.Database">
+            <summary>Gets the database name.</summary>
+            <value>The database name.</value>
+        </member>
+        <member name="P:F2F.Testing.NUnit.Npgsql.PostgreSQLFeature.ConnectionString">
+            <summary>Gets the connection string to temporary database.</summary>
+            <value>The connection string.</value>
+        </member>
+        <member name="M:F2F.Testing.NUnit.Npgsql.PostgreSQLFeature.NUnit_SetUpDatabase">
+            <summary>Set up the database.</summary>
+        </member>
+        <member name="M:F2F.Testing.NUnit.Npgsql.PostgreSQLFeature.NUnit_TearDownDatabase">
+            <summary>Tear down the database.</summary>
+        </member>
+        <member name="M:F2F.Testing.NUnit.Npgsql.PostgreSQLFeature.Import(System.String)">
+            <summary>
+            Import a SQL dump file into database.
+            </summary>
+            <param name="sqlDumpFile">The SQL dump file.</param>
+        </member>
+        <member name="M:F2F.Testing.NUnit.Npgsql.PostgreSQLFeature.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged
+            resources.
+            </summary>
+            <seealso cref="M:System.IDisposable.Dispose()"/>
+        </member>
+    </members>
+</doc>
